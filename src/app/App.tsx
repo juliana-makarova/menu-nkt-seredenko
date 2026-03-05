@@ -437,7 +437,7 @@ function ProductMenuOpen({ menuScrollOffset, setMenuScrollOffset, activeMenuItem
         }}
         transition={{ opacity: { duration: 0.2 } }}
         onMouseDown={handleMouseDown}
-        className="absolute bg-[#b3cae8] h-[192.955px] left-[247.78px] rounded-[10px] w-[8px] cursor-grab active:cursor-grabbing hover:bg-[#9bb8d8]"
+        className="absolute bg-[#b3cae8] h-[192.955px] left-[251.78px] rounded-[10px] w-[4px] cursor-grab active:cursor-grabbing hover:bg-[#9bb8d8]"
         style={{ userSelect: 'none' }}
       />
     </div>
@@ -550,7 +550,7 @@ function VseTab({ scrollOffset, setScrollOffset }: { scrollOffset: number; setSc
       <motion.div
         animate={{ top: scrollBarY }}
         onMouseDown={handleMouseDown}
-        className="absolute bg-[#b3cae8] h-[582.432px] left-[1267.74px] rounded-[10px] w-[8.337px] cursor-grab active:cursor-grabbing hover:bg-[#9bb8d8]"
+        className="absolute bg-[#b3cae8] h-[582.432px] left-[1271.91px] rounded-[10px] w-[4.1685px] cursor-grab active:cursor-grabbing hover:bg-[#9bb8d8]"
         style={{ userSelect: 'none' }}
       />
     </div>

@@ -36,7 +36,7 @@ export function TabWrapper({
       {showScrollbar && (
         <motion.div
           animate={{ top: 5.48 + ((scrollOffset / -600) * 400) }}
-          className="absolute bg-[#b3cae8] h-[582.432px] left-[1267.74px] rounded-[10px] w-[8.337px]"
+          className="absolute bg-[#b3cae8] h-[582.432px] left-[1271.91px] rounded-[10px] w-[4.1685px]"
           style={{ userSelect: 'none', pointerEvents: 'none' }}
         />
       )}
