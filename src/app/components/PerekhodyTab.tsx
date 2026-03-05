@@ -43,9 +43,15 @@ export function PerekhodyTab({ scrollOffset, setScrollOffset }: { scrollOffset: 
 function PerekhodyColumn1() {
   return (
     <>
-      <Column title="Placeholder 1" items={[
-        "Подраздел 1",
-        "Подраздел 2"
+      <Column title="Коаксиальные переходы" items={[
+        "Панельные",
+        "\"Дюйм-метрика\" - на тип III и IX",
+        "Герметичные переходы",
+        "Быстрого соединения",
+        "Угловые и тройники",
+        "NMD переходы",
+        "С низким PIM",
+        "ATEX сертифицированные"
       ]} />
     </>
   );
@@ -55,10 +61,7 @@ function PerekhodyColumn1() {
 function PerekhodyColumn2() {
   return (
     <>
-      <Column title="Placeholder 2" items={[
-        "Подраздел 1",
-        "Подраздел 2"
-      ]} />
+      <Column title="Волноводные переходы" items={[]} />
     </>
   );
 }
