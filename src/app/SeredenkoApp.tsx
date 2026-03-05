@@ -7,68 +7,153 @@ type Section = {
   items: string[];
 };
 
-const sections: Section[] = [
+type ColumnDefinition = {
+  blocks: Section[];
+};
+
+const columns: ColumnDefinition[] = [
   {
-    title: "Коаксиальные",
-    items: [
-      "Коаксиальные соединители",
-      "Коаксиальные кабели",
-      "Коаксиальные кабельные сборки",
-      "Коаксиальные переходы",
-      "Аттенюаторы",
-      "Согласованные нагрузки",
-      "Делители и ответвители",
-      "Изоляторы и циркуляторы",
-      "Фильтры",
-      "Антенны",
-      "Грозозащита",
-      "Комбайнеры и компоненты",
-      "Переключатели",
-      "Корректоры фазы",
-      "Инжекторы питания",
-      "Блокировки DC",
+    blocks: [
+      {
+        title: "Коаксиальные",
+        items: [
+          "Коаксиальные соединители",
+          "Коаксиальные кабели",
+          "Коаксиальные кабельные сборки",
+          "Коаксиальные переходы",
+          "Аттенюаторы",
+          "Согласованные нагрузки",
+          "Делители и ответвители",
+          "Изоляторы и циркуляторы",
+          "Фильтры",
+          "Антенны",
+          "Грозозащита",
+          "Комбайнеры и компоненты",
+          "Переключатели",
+          "Корректоры фазы",
+          "Инжекторы питания",
+          "Блокировки DC",
+        ],
+      },
     ],
   },
   {
-    title: "Оптические",
-    items: [],
+    blocks: [
+      {
+        title: "Оптические",
+        items: [
+          "Оптические кабели",
+          "Оптические соединители",
+          "Оптические компоненты",
+        ],
+      },
+      {
+        title: "Электрические",
+        items: [
+          "Электрические кабели",
+          "Кабели передачи данных",
+        ],
+      },
+    ],
   },
   {
-    title: "Пункт_3",
-    items: [],
+    blocks: [
+      {
+        title: "Волноводные",
+        items: [
+          "Коаксиально-волноводные переходы",
+          "Волноводные секции",
+          "Волноводные переходы",
+          "Волноводные аттенюаторы",
+          "Волноводные нагрузки",
+          "Волноводне ответвители",
+          "Волноводные переключатели",
+          "Рупорные антенны",
+        ],
+      },
+    ],
   },
   {
-    title: "Пункт_4",
-    items: [],
+    blocks: [
+      {
+        title: "Инструменты",
+        items: [
+          "Для подготовки гофрированных кабелей",
+          "Для монтажа ВЧ соединителей",
+          "Моментные ключи",
+          "Калибровочные наборы",
+        ],
+      },
+      {
+        title: "Аксессуары",
+        items: [
+          "Колпачки для соединителей",
+          "Крепления FIMO для кабелей",
+          "Вводные панели",
+          "Кабельные вводы",
+          "Заглушки",
+          "Герметизиция",
+        ],
+      },
+    ],
   },
 ];
 
 export default function SeredenkoApp() {
   const [isProductOpen, setIsProductOpen] = useState(false);
+  const menuItems = [
+    "Продукция",
+    "Применение",
+    "Производители",
+    "О компании",
+    "Производство",
+    "Контакты",
+    "Знания",
+    "События",
+  ];
 
   return (
     <div className="w-full min-h-screen bg-white overflow-auto">
       <div className="hidden md:block w-[1728px] h-[1117px] min-w-[1728px] mx-auto relative overflow-hidden bg-white">
-        <div className="absolute h-[131px] left-[80.82px] top-0 w-[1574px]">
+        <div className="absolute h-[131px] left-[80.82px] top-0 w-[1574px] z-30">
           <img alt="" className="absolute object-cover size-full" src={imgHeader} />
         </div>
 
         <div className="absolute h-[1113.073px] left-[80.82px] top-0 w-[1574px]">
           <img alt="" className="absolute object-cover size-full" src={imgBackground} />
+          <img alt="" className="absolute object-cover size-full" src={imgBackground} />
+          <img alt="" className="absolute object-cover size-full" src={imgBackground} />
+          <div className="absolute inset-0 overflow-hidden">
+            <img alt="" className="absolute h-[115%] left-0 top-0 w-full" src={imgBackground} />
+          </div>
+        </div>
+
+        <div className="absolute h-[970.182px] left-[80.82px] top-[148.39px] w-[1574px]">
+          <img alt="" className="absolute object-cover size-full" src={imgBackground} />
+          <img alt="" className="absolute object-cover size-full" src={imgBackground} />
+          <img alt="" className="absolute object-cover size-full" src={imgBackground} />
+          <div className="absolute inset-0 overflow-hidden">
+            <img alt="" className="absolute h-[131.93%] left-0 top-[-19.93%] w-full" src={imgBackground} />
+          </div>
         </div>
 
         <div className="absolute bg-[#eaf3ff] h-[42px] left-[248px] top-[107px] w-[1109px]" />
 
         <div className="absolute bg-[#eaf3ff] flex gap-[15px] items-center left-[248px] top-[106px] w-[1109px] h-[41px] z-30">
-          <button
-            type="button"
-            onClick={() => setIsProductOpen((prev) => !prev)}
-            className={`h-[41px] pb-[9px] pt-[11px] px-[21px] w-[116px] font-['Roboto_Condensed',sans-serif] font-medium text-[16px] text-black text-left cursor-pointer ${
-              isProductOpen ? "bg-[#dceafc]" : ""
-            }`}
-          >
-            Продукция
-          </button>
+          {menuItems.map((item, index) => (
+            <button
+              key={item}
+              type="button"
+              onClick={index === 0 ? () => setIsProductOpen((prev) => !prev) : undefined}
+              className={`font-['Roboto_Condensed',sans-serif] font-medium text-[16px] text-black leading-[normal] ${
+                index === 0
+                  ? `${isProductOpen ? "bg-[#dceafc]" : ""} h-[41px] pb-[9px] pt-[11px] px-[21px] w-[116px] text-left cursor-pointer`
+                  : "px-[12px] py-[10px] whitespace-nowrap"
+              }`}
+            >
+              {item}
+            </button>
+          ))}
         </div>
 
         {isProductOpen && (
@@ -76,8 +161,8 @@ export default function SeredenkoApp() {
             <div className="absolute bg-[#f5faff] h-[969.282px] left-0 top-0 w-[1278.53px]" />
 
             <div className="absolute left-[30px] top-[44px] right-[30px] flex gap-[20px] items-start">
-              {sections.map((section) => (
-                <SectionColumn key={section.title} title={section.title} items={section.items} />
+              {columns.map((column, index) => (
+                <ColumnStack key={`column-${index}`} blocks={column.blocks} />
               ))}
             </div>
           </div>
@@ -87,7 +172,17 @@ export default function SeredenkoApp() {
   );
 }
 
-function SectionColumn({ title, items }: Section) {
+function ColumnStack({ blocks }: { blocks: Section[] }) {
+  return (
+    <div className="flex flex-col gap-[24px] items-start w-[289px]">
+      {blocks.map((block) => (
+        <SectionCard key={block.title} title={block.title} items={block.items} />
+      ))}
+    </div>
+  );
+}
+
+function SectionCard({ title, items }: Section) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
