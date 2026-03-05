@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import svgPaths from "../imports/svg-6zd0nrlowv";
-import imgScreenshot20260304At1757451 from "figma:asset/0994413d3af1202eddbaef7bb68d7e8d993e516b.png";
-import imgScreenshot20260303At1419581 from "figma:asset/6cb3fe99ec2911ae439a5dd1f3eb2032f795ead3.png";
+import imgScreenshot20260304At1757451 from "../assets/0994413d3af1202eddbaef7bb68d7e8d993e516b.png";
+import imgScreenshot20260303At1419581 from "../assets/6cb3fe99ec2911ae439a5dd1f3eb2032f795ead3.png";
 import { DeliteliOtvetviteliTab } from "./components/DeliteliOtvetviteliTab";
 import { PerekhodyTab } from "./components/PerekhodyTab";
 import { InstrumentyTab } from "./components/InstrumentyTab";
