@@ -115,11 +115,13 @@ export default function SeredenkoApp() {
   return (
     <div className="w-full min-h-screen bg-white overflow-auto">
       <div className="hidden md:block w-[1728px] h-[1117px] min-w-[1728px] mx-auto relative overflow-hidden bg-white">
-        <div className="absolute h-[131px] left-[80.82px] top-0 w-[1574px] z-30">
+        <div className="absolute bg-white h-[131px] left-[80.82px] top-0 w-[1574px] z-20" />
+
+        <div className="absolute h-[131px] left-[80.82px] top-0 w-[1574px] z-40">
           <img alt="" className="absolute object-cover size-full" src={imgHeader} />
         </div>
 
-        <div className="absolute h-[1113.073px] left-[80.82px] top-0 w-[1574px]">
+        <div className="absolute h-[1113.073px] left-[80.82px] top-0 w-[1574px] z-0">
           <img alt="" className="absolute object-cover size-full" src={imgBackground} />
           <img alt="" className="absolute object-cover size-full" src={imgBackground} />
           <img alt="" className="absolute object-cover size-full" src={imgBackground} />
@@ -128,7 +130,7 @@ export default function SeredenkoApp() {
           </div>
         </div>
 
-        <div className="absolute h-[970.182px] left-[80.82px] top-[148.39px] w-[1574px]">
+        <div className="absolute h-[970.182px] left-[80.82px] top-[148.39px] w-[1574px] z-0">
           <img alt="" className="absolute object-cover size-full" src={imgBackground} />
           <img alt="" className="absolute object-cover size-full" src={imgBackground} />
           <img alt="" className="absolute object-cover size-full" src={imgBackground} />
@@ -137,9 +139,9 @@ export default function SeredenkoApp() {
           </div>
         </div>
 
-        <div className="absolute bg-[#eaf3ff] h-[42px] left-[248px] top-[107px] w-[1109px]" />
+        <div className="absolute bg-[#eaf3ff] h-[42px] left-[248px] top-[107px] w-[1109px] z-50" />
 
-        <div className="absolute bg-[#eaf3ff] flex gap-[15px] items-center left-[248px] top-[106px] w-[1109px] h-[41px] z-30">
+        <div className="absolute bg-[#eaf3ff] flex gap-[15px] items-center left-[248px] top-[106px] w-[1109px] h-[41px] z-[60]">
           {menuItems.map((item, index) => (
             <button
               key={item}
