@@ -76,6 +76,7 @@ function PerekhodyColumn3() {
   return (
     <>
       <Column title="Волноводные переходы" items={[]} />
+      <Column title="Коаксиально-волноводные переходы" items={[]} />
     </>
   );
 }

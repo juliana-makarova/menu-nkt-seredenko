@@ -1375,6 +1375,7 @@ function SoediniteliColumn2() {
         "Соединители полевого монтажа"
       ]} />
       <Column title="Оптические преобразователи" items={[
+        "GPS-over-Fiber",
         "RF-over-Fiber"
       ]} />
     </>
@@ -1700,18 +1701,9 @@ function VolnovodnyeKomponentyTab({ scrollOffset, setScrollOffset }: { scrollOff
 function VolnovodnyeKomponentyColumn1() {
   return (
     <>
-      <Column title="Коаксиально-волноводные переходы" items={[
-        "Подраздел 1",
-        "Подраздел 2"
-      ]} />
-      <Column title="Волноводные секции" items={[
-        "Подраздел 1",
-        "Подраздел 2"
-      ]} />
-      <Column title="Волноводные переходы" items={[
-        "Подраздел 1",
-        "Подраздел 2"
-      ]} />
+      <Column title="Коаксиально-волноводные переходы" items={[]} />
+      <Column title="Волноводные секции" items={[]} />
+      <Column title="Волноводные переходы" items={[]} />
     </>
   );
 }
@@ -1720,18 +1712,9 @@ function VolnovodnyeKomponentyColumn1() {
 function VolnovodnyeKomponentyColumn2() {
   return (
     <>
-      <Column title="Волноводные аттенюаторы" items={[
-        "Подраздел 1",
-        "Подраздел 2"
-      ]} />
-      <Column title="Рупорные антенны" items={[
-        "Подраздел 1",
-        "Подраздел 2"
-      ]} />
-      <Column title="Волноводные нагрузки" items={[
-        "Подраздел 1",
-        "Подраздел 2"
-      ]} />
+      <Column title="Волноводные аттенюаторы" items={[]} />
+      <Column title="Рупорные антенны" items={[]} />
+      <Column title="Волноводные нагрузки" items={[]} />
     </>
   );
 }
@@ -1740,14 +1723,8 @@ function VolnovodnyeKomponentyColumn2() {
 function VolnovodnyeKomponentyColumn3() {
   return (
     <>
-      <Column title="Волноводные ответвители" items={[
-        "Подраздел 1",
-        "Подраздел 2"
-      ]} />
-      <Column title="Волноводные переключатели" items={[
-        "Подраздел 1",
-        "Подраздел 2"
-      ]} />
+      <Column title="Волноводные ответвители" items={[]} />
+      <Column title="Волноводные переключатели" items={[]} />
     </>
   );
 }

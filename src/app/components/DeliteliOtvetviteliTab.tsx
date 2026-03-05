@@ -79,6 +79,8 @@ function DeliteliOtvetviteliColumn3() {
         "Подраздел 1",
         "Подраздел 2"
       ]} />
+      <Column title="Волноводные ответвители" items={[]} />
+      <Column title="Оптические разветвители" items={[]} />
     </>
   );
 }
