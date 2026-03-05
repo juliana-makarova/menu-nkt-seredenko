@@ -23,7 +23,9 @@ export default function App() {
   useEffect(() => {
     const handleResize = () => {
       if (containerRef.current) {
-        const targetWidth = 1728;
+        // Add a horizontal safety margin to avoid right-side clipping
+        // on narrower browser widths (including GitHub Pages rendering).
+        const targetWidth = 1820;
         const targetHeight = 1117;
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
