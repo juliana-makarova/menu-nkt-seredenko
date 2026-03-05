@@ -13,6 +13,7 @@ import { MobileMenu } from "./components/MobileMenu";
 export default function App() {
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
   const [isPrimenenieMenuOpen, setIsPrimenenieMenuOpen] = useState(false);
+  const [isProizvoditeliMenuOpen, setIsProizvoditeliMenuOpen] = useState(false);
   const [scrollOffset, setScrollOffset] = useState(0);
   const [menuScrollOffset, setMenuScrollOffset] = useState(0); // Для Product_Menu_open
   const [activeMenuItem, setActiveMenuItem] = useState(0); // 0 = "Все продукты", 1 = "Соединители", и т.д.
@@ -36,6 +37,8 @@ export default function App() {
           setIsProductMenuOpen={setIsProductMenuOpen}
           isPrimenenieMenuOpen={isPrimenenieMenuOpen}
           setIsPrimenenieMenuOpen={setIsPrimenenieMenuOpen}
+          isProizvoditeliMenuOpen={isProizvoditeliMenuOpen}
+          setIsProizvoditeliMenuOpen={setIsProizvoditeliMenuOpen}
           scrollOffset={scrollOffset}
           setScrollOffset={setScrollOffset}
           menuScrollOffset={menuScrollOffset}
@@ -53,6 +56,8 @@ function CatalogueContent({
   setIsProductMenuOpen, 
   isPrimenenieMenuOpen,
   setIsPrimenenieMenuOpen,
+  isProizvoditeliMenuOpen,
+  setIsProizvoditeliMenuOpen,
   scrollOffset, 
   setScrollOffset,
   menuScrollOffset,
@@ -64,6 +69,8 @@ function CatalogueContent({
   setIsProductMenuOpen: (value: boolean) => void;
   isPrimenenieMenuOpen: boolean;
   setIsPrimenenieMenuOpen: (value: boolean) => void;
+  isProizvoditeliMenuOpen: boolean;
+  setIsProizvoditeliMenuOpen: (value: boolean) => void;
   scrollOffset: number;
   setScrollOffset: (value: number) => void;
   menuScrollOffset: number;
@@ -223,6 +230,12 @@ function CatalogueContent({
           <PrimenenieMenuOpen />
         </div>
       )}
+
+      {isProizvoditeliMenuOpen && (
+        <div className="relative z-20">
+          <ProizvoditeliMenuOpen />
+        </div>
+      )}
       
       {/* Menu_main - должен быть поверх overlay */}
       <div className="relative z-30">
@@ -232,6 +245,7 @@ function CatalogueContent({
             setIsProductMenuOpen(next);
             if (next) {
               setIsPrimenenieMenuOpen(false);
+              setIsProizvoditeliMenuOpen(false);
             }
           }}
           onPrimenenieClick={() => {
@@ -239,10 +253,20 @@ function CatalogueContent({
             setIsPrimenenieMenuOpen(next);
             if (next) {
               setIsProductMenuOpen(false);
+              setIsProizvoditeliMenuOpen(false);
+            }
+          }}
+          onProizvoditeliClick={() => {
+            const next = !isProizvoditeliMenuOpen;
+            setIsProizvoditeliMenuOpen(next);
+            if (next) {
+              setIsProductMenuOpen(false);
+              setIsPrimenenieMenuOpen(false);
             }
           }}
           isProductActive={isProductMenuOpen}
           isPrimenenieActive={isPrimenenieMenuOpen}
+          isProizvoditeliActive={isProizvoditeliMenuOpen}
         />
       </div>
     </div>
@@ -253,18 +277,22 @@ function CatalogueContent({
 function MenuMain({
   onProductsClick,
   onPrimenenieClick,
+  onProizvoditeliClick,
   isProductActive,
   isPrimenenieActive,
+  isProizvoditeliActive,
 }: {
   onProductsClick: () => void;
   onPrimenenieClick: () => void;
+  onProizvoditeliClick: () => void;
   isProductActive: boolean;
   isPrimenenieActive: boolean;
+  isProizvoditeliActive: boolean;
 }) {
   const menuItems = [
     { text: "Продукция", onClick: onProductsClick, isActive: isProductActive },
     { text: "Применение", onClick: onPrimenenieClick, isActive: isPrimenenieActive },
-    { text: "Производители" },
+    { text: "Производители", onClick: onProizvoditeliClick, isActive: isProizvoditeliActive },
     { text: "О компании" },
     { text: "Производство" },
     { text: "Контакты" },
@@ -313,9 +341,9 @@ function PrimenenieMenuOpen() {
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
-      className="absolute bg-[#dceafc] h-[971px] left-[379px] overflow-clip top-[147px] w-[256px]"
+      className="absolute bg-[#dceafc] left-[379px] top-[147px] w-[256px]"
     >
-      <div className="absolute bg-[#dceafc] content-stretch flex flex-col items-start left-0 top-0 w-[256px]">
+      <div className="bg-[#dceafc] content-stretch flex flex-col items-start w-[256px]">
         {items.map((item, index) => {
           const isHovered = hoveredIndex === index;
           return (
@@ -339,6 +367,72 @@ function PrimenenieMenuOpen() {
                       <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 15.3137 12.7279">
                         <g>
                           <path d={svgPaths.p23012900} stroke={isHovered ? '#3D6BD0' : 'black'} strokeWidth="2" />
+                        </g>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </motion.div>
+  );
+}
+
+function ProizvoditeliMenuOpen() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const items = [
+    "H+S",
+    "NKT PRO",
+    "Spectrum",
+    "Rosenberger",
+    "Amphenol Procom",
+    "EUPEN",
+    "Prysmian",
+    "FIMO",
+    "Pulsar",
+    "SENKO",
+    "RFOne",
+    "Kenbotong Technology",
+    "LEMO",
+    "Cotran",
+    "Hefei",
+    "Лаборатория радиосвязи",
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2 }}
+      className="absolute bg-[#dceafc] left-[518px] top-[147px] w-[256px]"
+    >
+      <div className="bg-[#dceafc] content-stretch flex flex-col items-start w-[256px]">
+        {items.map((item, index) => {
+          const isHovered = hoveredIndex === index;
+          return (
+            <div
+              key={item}
+              className="relative shrink-0 w-full cursor-pointer transition-colors duration-150"
+              style={{ backgroundColor: isHovered ? "#f5faff" : "transparent" }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <div className="flex flex-row items-center size-full">
+                <div className="content-stretch flex items-center justify-between px-[20px] py-[12px] relative w-full">
+                  <p
+                    className="font-['Roboto_Condensed',sans-serif] font-medium leading-[normal] relative text-[16px] flex-1"
+                    style={{ color: isHovered ? "#3D6BD0" : "black" }}
+                  >
+                    {item}
+                  </p>
+                  <div className="h-[11.314px] relative shrink-0 w-[15.314px] ml-[10px]">
+                    <div className="absolute inset-[-6.25%_0]">
+                      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 15.3137 12.7279">
+                        <g>
+                          <path d={svgPaths.p23012900} stroke={isHovered ? "#3D6BD0" : "black"} strokeWidth="2" />
                         </g>
                       </svg>
                     </div>

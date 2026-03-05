@@ -103,6 +103,7 @@ const columns: ColumnDefinition[] = [
 export default function SeredenkoApp() {
   const [isProductOpen, setIsProductOpen] = useState(false);
   const [isPrimenenieOpen, setIsPrimenenieOpen] = useState(false);
+  const [isProizvoditeliOpen, setIsProizvoditeliOpen] = useState(false);
 
   return (
     <div className="w-full min-h-screen bg-white overflow-auto">
@@ -155,6 +156,7 @@ export default function SeredenkoApp() {
           )}
 
           {isPrimenenieOpen && <PrimenenieMenuOpen />}
+          {isProizvoditeliOpen && <ProizvoditeliMenuOpen />}
 
           <div className="relative z-30">
             <MenuMain
@@ -163,6 +165,7 @@ export default function SeredenkoApp() {
                 setIsProductOpen(next);
                 if (next) {
                   setIsPrimenenieOpen(false);
+                  setIsProizvoditeliOpen(false);
                 }
               }}
               onPrimenenieClick={() => {
@@ -170,10 +173,20 @@ export default function SeredenkoApp() {
                 setIsPrimenenieOpen(next);
                 if (next) {
                   setIsProductOpen(false);
+                  setIsProizvoditeliOpen(false);
+                }
+              }}
+              onProizvoditeliClick={() => {
+                const next = !isProizvoditeliOpen;
+                setIsProizvoditeliOpen(next);
+                if (next) {
+                  setIsProductOpen(false);
+                  setIsPrimenenieOpen(false);
                 }
               }}
               isProductActive={isProductOpen}
               isPrimenenieActive={isPrimenenieOpen}
+              isProizvoditeliActive={isProizvoditeliOpen}
             />
           </div>
         </div>
@@ -185,18 +198,22 @@ export default function SeredenkoApp() {
 function MenuMain({
   onProductsClick,
   onPrimenenieClick,
+  onProizvoditeliClick,
   isProductActive,
   isPrimenenieActive,
+  isProizvoditeliActive,
 }: {
   onProductsClick: () => void;
   onPrimenenieClick: () => void;
+  onProizvoditeliClick: () => void;
   isProductActive: boolean;
   isPrimenenieActive: boolean;
+  isProizvoditeliActive: boolean;
 }) {
   const menuItems = [
     { text: "Продукция", onClick: onProductsClick, isActive: isProductActive },
     { text: "Применение", onClick: onPrimenenieClick, isActive: isPrimenenieActive },
-    { text: "Производители" },
+    { text: "Производители", onClick: onProizvoditeliClick, isActive: isProizvoditeliActive },
     { text: "О компании" },
     { text: "Производство" },
     { text: "Контакты" },
@@ -245,9 +262,68 @@ function PrimenenieMenuOpen() {
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
-      className="absolute bg-[#dceafc] h-[971px] left-[379px] overflow-clip top-[147px] w-[256px] z-20"
+      className="absolute bg-[#dceafc] left-[379px] top-[147px] w-[256px] z-20"
     >
-      <div className="absolute bg-[#dceafc] flex flex-col items-start left-0 top-0 w-[256px]">
+      <div className="bg-[#dceafc] flex flex-col items-start w-[256px]">
+        {items.map((item, index) => {
+          const isHovered = hoveredIndex === index;
+          return (
+            <button
+              key={item}
+              type="button"
+              className="w-full cursor-pointer"
+              style={{ backgroundColor: isHovered ? "#f5faff" : "transparent" }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <div className="flex items-center justify-between px-[20px] py-[12px] w-full">
+                <p
+                  className="font-['Roboto_Condensed',sans-serif] font-medium leading-[normal] text-[16px] text-left flex-1"
+                  style={{ color: isHovered ? "#3D6BD0" : "black" }}
+                >
+                  {item}
+                </p>
+                <svg className="ml-[10px] h-[10px] w-[8px] shrink-0" fill="none" viewBox="0 0 8 10">
+                  <path d="M1 1L7 5L1 9" stroke={isHovered ? "#3D6BD0" : "black"} strokeWidth="1.5" />
+                </svg>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    </motion.div>
+  );
+}
+
+function ProizvoditeliMenuOpen() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const items = [
+    "H+S",
+    "NKT PRO",
+    "Spectrum",
+    "Rosenberger",
+    "Amphenol Procom",
+    "EUPEN",
+    "Prysmian",
+    "FIMO",
+    "Pulsar",
+    "SENKO",
+    "RFOne",
+    "Kenbotong Technology",
+    "LEMO",
+    "Cotran",
+    "Hefei",
+    "Лаборатория радиосвязи",
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2 }}
+      className="absolute bg-[#dceafc] left-[518px] top-[147px] w-[256px] z-20"
+    >
+      <div className="bg-[#dceafc] flex flex-col items-start w-[256px]">
         {items.map((item, index) => {
           const isHovered = hoveredIndex === index;
           return (
