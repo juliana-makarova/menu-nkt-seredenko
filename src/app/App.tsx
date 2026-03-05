@@ -1147,8 +1147,8 @@ function VseProductyColumn3() {
         "Кольцевые и резистивные делители DA",
         "Реактивные делители"
       ]} />
-      <Column title="Инжекторы питания" items={[]} />
       <Column title="Изоляторы и циркуляторы" items={[]} />
+      <Column title="Инжекторы питания" items={[]} />
       <Column title="Блокировка DC" items={[]} />
     </>
   );

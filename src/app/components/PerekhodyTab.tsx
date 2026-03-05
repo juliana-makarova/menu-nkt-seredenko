@@ -61,7 +61,11 @@ function PerekhodyColumn1() {
 function PerekhodyColumn2() {
   return (
     <>
-      <Column title="Волноводные переходы" items={[]} />
+      <Column title="Оптические преобразователи" items={[
+        "GPS-over-Fiber",
+        "LAN-over-Fiber",
+        "RF-over-Fiber"
+      ]} />
     </>
   );
 }
@@ -70,10 +74,7 @@ function PerekhodyColumn2() {
 function PerekhodyColumn3() {
   return (
     <>
-      <Column title="Placeholder 3" items={[
-        "Подраздел 1",
-        "Подраздел 2"
-      ]} />
+      <Column title="Волноводные переходы" items={[]} />
     </>
   );
 }
