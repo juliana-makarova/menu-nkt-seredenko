@@ -6,6 +6,15 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   // GitHub Pages serves this project from /<repo-name>/ in production.
   base: process.env.NODE_ENV === 'production' ? '/menu-nkt-seredenko/' : '/',
+  build: {
+    rollupOptions: {
+      input: {
+        home: path.resolve(__dirname, 'index.html'),
+        menuNkt: path.resolve(__dirname, 'menu-nkt/index.html'),
+        menuNktSeredenko: path.resolve(__dirname, 'menu-nkt/seredenko/index.html'),
+      },
+    },
+  },
   plugins: [
     // The React and Tailwind plugins are both required for Make, even if
     // Tailwind is not being actively used – do not remove them

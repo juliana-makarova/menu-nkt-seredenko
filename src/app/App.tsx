@@ -242,7 +242,7 @@ function MenuMain({ onProductsClick, isProductActive }: { onProductsClick: () =>
             index === 0 ? `${item.isActive ? 'bg-[#dceafc]' : ''} h-[41px] pb-[9px] pt-[11px] px-[21px] w-[116px]` : "px-[12px] py-[10px]"
           } relative shrink-0 ${item.onClick ? 'cursor-pointer hover:bg-[#dceafc]' : ''}`}
         >
-          <p className="font-['Roboto_Condensed:Medium',sans-serif] font-medium leading-[normal] relative shrink-0 text-[16px] text-black whitespace-nowrap">
+          <p className="font-['Roboto_Condensed',sans-serif] font-medium leading-[normal] relative shrink-0 text-[16px] text-black whitespace-nowrap">
             {item.text}
           </p>
         </div>
@@ -404,7 +404,7 @@ function ProductMenuOpen({ menuScrollOffset, setMenuScrollOffset, activeMenuItem
               <div className="flex flex-row items-center size-full">
                 <div className="content-stretch flex items-center justify-between px-[20px] py-[12px] relative w-full">
                   <p 
-                    className="font-['Roboto_Condensed:Medium',sans-serif] font-medium leading-[normal] relative text-[16px] flex-1"
+                    className="font-['Roboto_Condensed',sans-serif] font-medium leading-[normal] relative text-[16px] flex-1"
                     style={{ 
                       color: (isActive || isHovered) ? '#3D6BD0' : 'black',
                       whiteSpace: item.isMultiline ? 'pre-wrap' : 'nowrap',
@@ -1686,7 +1686,7 @@ function Column({ title, items }: { title: string; items: string[] }) {
         <div className="flex flex-row items-center size-full">
           <div className="content-stretch flex items-center pb-[6px] pt-[12px] px-[20px] relative w-full">
             <p 
-              className="flex-[1_0_0] font-['Roboto_Condensed:Medium',sans-serif] font-medium leading-[normal] min-h-px min-w-px relative text-[16px]"
+              className="flex-[1_0_0] font-['Roboto_Condensed',sans-serif] font-medium leading-[normal] min-h-px min-w-px relative text-[16px]"
               style={{ color: hoveredTitle ? '#3D6BD0' : 'black' }}
             >
               {title}
@@ -1706,7 +1706,7 @@ function Column({ title, items }: { title: string; items: string[] }) {
           <div className="flex flex-row items-center size-full">
             <div className="content-stretch flex items-center px-[20px] py-[6px] relative w-full">
               <p 
-                className="flex-[1_0_0] font-['Roboto_Condensed:Light',sans-serif] font-light leading-[normal] min-h-px min-w-px relative text-[16px] whitespace-pre-wrap"
+                className="flex-[1_0_0] font-['Roboto_Condensed',sans-serif] font-light leading-[normal] min-h-px min-w-px relative text-[16px] whitespace-pre-wrap"
                 style={{ color: hoveredIndex === index ? '#3D6BD0' : 'black' }}
               >
                 {item}
