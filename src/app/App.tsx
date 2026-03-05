@@ -407,7 +407,7 @@ function ProizvoditeliMenuOpen() {
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
-      className="absolute bg-[#dceafc] left-[518px] top-[147px] w-[256px]"
+      className="absolute bg-[#dceafc] left-[500px] top-[147px] w-[256px]"
     >
       <div className="bg-[#dceafc] content-stretch flex flex-col items-start w-[256px]">
         {items.map((item, index) => {
@@ -1376,6 +1376,7 @@ function SoediniteliColumn2() {
       ]} />
       <Column title="Оптические преобразователи" items={[
         "GPS-over-Fiber",
+        "LAN-over-Fiber",
         "RF-over-Fiber"
       ]} />
     </>

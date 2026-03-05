@@ -321,7 +321,7 @@ function ProizvoditeliMenuOpen() {
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
-      className="absolute bg-[#dceafc] left-[518px] top-[147px] w-[256px] z-20"
+      className="absolute bg-[#dceafc] left-[500px] top-[147px] w-[256px] z-20"
     >
       <div className="bg-[#dceafc] flex flex-col items-start w-[256px]">
         {items.map((item, index) => {
