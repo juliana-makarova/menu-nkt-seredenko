@@ -107,7 +107,7 @@ export default function SeredenkoApp() {
 
   return (
     <div className="w-full min-h-screen bg-white overflow-auto">
-      <div className="hidden md:block w-[1728px] h-[1117px] min-w-[1728px] mx-auto">
+      <div className="block w-[1728px] h-[1117px] min-w-[1728px] mx-auto">
         <div className="bg-white relative size-full overflow-hidden" data-name="Catalogue_comp">
           <div className="absolute h-[131px] left-[80.82px] top-0 w-[1574px]">
             <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
