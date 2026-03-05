@@ -99,7 +99,7 @@ function Column({ title, items }: { title: string; items: string[] }) {
         <div className="flex flex-row items-center size-full">
           <div className="content-stretch flex items-center pb-[6px] pt-[12px] px-[20px] relative w-full">
             <p 
-              className="flex-[1_0_0] font-['Roboto_Condensed:Medium',sans-serif] font-medium leading-[normal] min-h-px min-w-px relative text-[16px]"
+              className="flex-[1_0_0] font-['Roboto_Condensed',sans-serif] font-medium leading-[normal] min-h-px min-w-px relative text-[16px]"
               style={{ color: hoveredTitle ? '#3D6BD0' : 'black' }}
             >
               {title}
@@ -119,7 +119,7 @@ function Column({ title, items }: { title: string; items: string[] }) {
           <div className="flex flex-row items-center size-full">
             <div className="content-stretch flex items-center pb-[6px] pt-[6px] px-[20px] relative w-full">
               <p 
-                className="flex-[1_0_0] font-['Roboto_Condensed:Light',sans-serif] font-light leading-[normal] min-h-px min-w-px relative text-[16px]"
+                className="flex-[1_0_0] font-['Roboto_Condensed',sans-serif] font-light leading-[normal] min-h-px min-w-px relative text-[16px]"
                 style={{ color: hoveredIndex === index ? '#3D6BD0' : 'black' }}
               >
                 {item}
