@@ -15,33 +15,7 @@ export default function App() {
   const [scrollOffset, setScrollOffset] = useState(0);
   const [menuScrollOffset, setMenuScrollOffset] = useState(0); // Для Product_Menu_open
   const [activeMenuItem, setActiveMenuItem] = useState(0); // 0 = "Все продукты", 1 = "Соединители", и т.д.
-  const [scale, setScale] = useState(1);
-  const containerRef = useRef<HTMLDivElement>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  // Автоскейл для адаптации под размер экрана
-  useEffect(() => {
-    const handleResize = () => {
-      if (containerRef.current) {
-        // Add a horizontal safety margin to avoid right-side clipping
-        // on narrower browser widths (including GitHub Pages rendering).
-        const targetWidth = 1820;
-        const targetHeight = 1117;
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
-        
-        const scaleX = windowWidth / targetWidth;
-        const scaleY = windowHeight / targetHeight;
-        const newScale = Math.min(scaleX, scaleY, 1); // Не увеличиваем больше 100%
-        
-        setScale(newScale);
-      }
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   // Сброс скролла при изменении активного пункта меню
   const handleActiveMenuItemChange = (index: number) => {
@@ -50,15 +24,12 @@ export default function App() {
   };
 
   return (
-    <div ref={containerRef} className="size-full flex items-center justify-center bg-white overflow-hidden">
+    <div className="w-full min-h-screen bg-white overflow-auto">
       {/* Мобильное меню */}
       <MobileMenu isOpen={isMobileMenuOpen} onToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
       
-      {/* Макет без мокапа - отображается напрямую с автоскейло�� */}
-      <div 
-        className="hidden md:block w-[1728px] h-[1117px] origin-center"
-        style={{ transform: `scale(${scale})` }}
-      >
+      {/* Desktop layout with fixed canvas size, no auto scaling */}
+      <div className="hidden md:block w-[1728px] h-[1117px] min-w-[1728px] mx-auto">
         <CatalogueContent 
           isProductMenuOpen={isProductMenuOpen}
           setIsProductMenuOpen={setIsProductMenuOpen}
