@@ -462,16 +462,16 @@ function ProductMenuOpen({ menuScrollOffset, setMenuScrollOffset, activeMenuItem
     { text: "Кабели", width: "auto" },
     { text: "Антенны", width: "auto" },
     { text: "Пассивные компоненты", width: "auto" },
-    { text: "Фильтры", width: "auto" },
-    { text: "Кабельные вводы,\nкрепления, герметизация", isMultiline: true, width: "168px" },
     { text: "Кабельные сборки", width: "auto" },
-    { text: "Волноводные компоненты", width: "180.307px" },
-    { text: "Оптические компоненты", width: "auto" },
-    { text: "Делители, ответвители\nи разветвители", isMultiline: true, width: "180px" },
+    { text: "Фильтры", width: "auto" },
     { text: "Переходы", width: "163.537px" },
-    { text: "Инструменты", width: "163.537px" },
+    { text: "Волноводные компоненты", width: "180.307px" },
+    { text: "Делители, ответвители\nи разветвители", isMultiline: true, width: "180px" },    
+    { text: "Кабельные вводы,\nкрепления, герметизация", isMultiline: true, width: "168px" },
+    { text: "Оптические компоненты", width: "auto" },
     { text: "Комбайнеры и компоненты", width: "auto" },
-    { text: "Грозозащита", width: "auto" },
+    { text: "Инструменты", width: "163.537px" },
+    { text: "Грозозащита", width: "auto" }
    // { text: "Изоляторы и циркуляторы", width: "auto" },
    // { text: "Инжекторы питания", width: "auto" },
    // { text: "Блокировки DC", width: "auto" }
@@ -1377,11 +1377,6 @@ function SoediniteliColumn2() {
         "Стандартные оптические соединители",
         "Гибридные оптические соединители",
         "Соединители полевого монтажа"
-      ]} />
-      <Column title="Оптические преобразователи" items={[
-        "GPS-over-Fiber",
-        "LAN-over-Fiber",
-        "RF-over-Fiber"
       ]} />
     </>
   );
