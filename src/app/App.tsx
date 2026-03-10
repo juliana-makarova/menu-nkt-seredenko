@@ -472,9 +472,9 @@ function ProductMenuOpen({ menuScrollOffset, setMenuScrollOffset, activeMenuItem
     { text: "Инструменты", width: "163.537px" },
     { text: "Комбайнеры и компоненты", width: "auto" },
     { text: "Грозозащита", width: "auto" },
-    { text: "Изоляторы и циркуляторы", width: "auto" },
-    { text: "Инжекторы питания", width: "auto" },
-    { text: "Блокировки DC", width: "auto" }
+   // { text: "Изоляторы и циркуляторы", width: "auto" },
+   // { text: "Инжекторы питания", width: "auto" },
+   // { text: "Блокировки DC", width: "auto" }
   ];
 
   const handleMouseEnter = (index: number) => {
