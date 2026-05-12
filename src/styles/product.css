@@ -630,6 +630,7 @@ button {
 }
 
 .related-products {
+  margin-top: 48px;
   margin-bottom: 67px;
   padding: 34px 57px 70px;
 }
