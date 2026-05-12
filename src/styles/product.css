@@ -428,6 +428,14 @@ button {
   padding-top: 31px;
 }
 
+.file-row--extra {
+  display: none;
+}
+
+.product-files.is-open .file-row--extra {
+  display: block;
+}
+
 .file-row__meta {
   display: grid;
   grid-template-columns: 46px minmax(0, 1fr);
@@ -471,6 +479,10 @@ button {
   border: 1px solid #3f6bd2;
 }
 
+.file-row__actions button:hover {
+  background: #dceafc;
+}
+
 .file-row__actions img {
   display: block;
   width: 18px;
@@ -504,6 +516,14 @@ button {
   font-size: 20px;
   font-weight: 300;
   line-height: 1.2;
+}
+
+.product-description__extra {
+  display: none;
+}
+
+.product-description.is-open .product-description__extra {
+  display: block;
 }
 
 .product-description .text-link {
