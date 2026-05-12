@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   BarChart3,
   ChevronUp,
@@ -200,28 +201,50 @@ function Specs() {
 }
 
 function Faq() {
+  const [openItems, setOpenItems] = useState([0]);
   const items = [
-    "RG-316 и RG-178 — подойдут ли к вилке MMCX-50-2-13/111 OE?",
-    "Как правильно припаять центральный контакт вилки к кабелю?",
-    "Какие типичные ошибки возникают при монтаже этой вилки?",
+    {
+      question: "Совместима ли данная вилка с кабелями RG-316 и RG-178?",
+      answer:
+        "Да, вилка MMCX-50-2-13/111 OE совместима с кабелями RG-316 и RG-178. Это подтверждается данными из технической документации и спецификаций MMCX-разъёмов.",
+    },
+    {
+      question: "RG-316 и RG-178 — подойдут ли к вилке MMCX-50-2-13/111 OE?",
+      answer:
+        "RG-316 и RG-178 — подойдут ли к вилке MMCX-50-2-13/111 OE? Для прототипа этот текст дублирует вопрос и показывает, как блок раскрывается при клике.",
+    },
+    {
+      question: "Как правильно припаять центральный контакт вилки к кабелю?",
+      answer:
+        "Как правильно припаять центральный контакт вилки к кабелю? В рабочей версии здесь может быть инструкция по подготовке кабеля, пайке и проверке соединения.",
+    },
+    {
+      question: "Какие типичные ошибки возникают при монтаже этой вилки?",
+      answer:
+        "Какие типичные ошибки возникают при монтаже этой вилки? Для наглядности текст раскрытого ответа занимает несколько строк и помогает проверить поведение аккордеона.",
+    },
   ];
+  const toggleItem = (index: number) => {
+    setOpenItems((current) =>
+      current.includes(index) ? current.filter((item) => item !== index) : [...current, index],
+    );
+  };
 
   return (
     <section className="content-card product-faq">
       <h2>FAQ</h2>
-      <div className="faq-item is-open">
-        <button type="button"><ChevronUp size={24} />Совместима ли данная вилка с кабелями RG-316 и RG-178?</button>
-        <p>
-          Да, вилка MMCX-50-2-13/111 OE совместима с кабелями RG-316 и RG-178.
-          Это подтверждается данными из технической документации и спецификаций
-          MMCX-разъёмов.
-        </p>
-      </div>
-      {items.map((item) => (
-        <div className="faq-item" key={item}>
-          <button type="button"><img className="faq-item__arrow" src={iconArrow} alt="" />{item}</button>
-        </div>
-      ))}
+      {items.map((item, index) => {
+        const isOpen = openItems.includes(index);
+        return (
+          <div className={`faq-item ${isOpen ? "is-open" : ""}`} key={item.question}>
+            <button type="button" onClick={() => toggleItem(index)} aria-expanded={isOpen}>
+              {isOpen ? <ChevronUp size={24} /> : <img className="faq-item__arrow" src={iconArrow} alt="" />}
+              {item.question}
+            </button>
+            {isOpen && <p>{item.answer}</p>}
+          </div>
+        );
+      })}
     </section>
   );
 }
