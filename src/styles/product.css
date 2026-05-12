@@ -578,6 +578,10 @@ button {
   flex: 0 0 auto;
 }
 
+.faq-item:not(.is-open) p {
+  display: none;
+}
+
 .faq-item__arrow {
   width: 19px;
   height: 25px;
