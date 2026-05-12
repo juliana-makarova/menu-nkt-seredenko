@@ -36,6 +36,15 @@ button {
   width: 1160px;
   margin: 0 auto;
   padding-top: 23px;
+}
+
+.product-header::before {
+  content: "";
+  position: absolute;
+  inset: 0 50%;
+  z-index: -1;
+  width: 100vw;
+  margin-left: -50vw;
   background: #fff;
 }
 
@@ -64,8 +73,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 30px;
-  margin-top: 12px;
+  height: 42px;
   padding: 0 10px;
   color: #9a9ca2;
   background: #fff;
@@ -235,6 +243,10 @@ button {
 }
 
 .product-gallery__thumbs button.is-active {
+  border-color: #3f6bd2;
+}
+
+.product-gallery__thumbs button:hover {
   border-color: #3f6bd2;
 }
 
