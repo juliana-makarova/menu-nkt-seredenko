@@ -1,14 +1,14 @@
 import {
   BarChart3,
-  ChevronDown,
   ChevronUp,
-  Download,
-  Eye,
   Search,
   ShoppingCart,
   Star,
   UserCircle,
 } from "lucide-react";
+import iconArrow from "../assets/product/icon-arrow.svg";
+import iconEye from "../assets/product/icon-eye.svg";
+import iconFile from "../assets/product/icon-file.svg";
 import logoNkt from "../assets/product/logo-nkt.svg";
 import productImage from "../assets/product/image-tovar-1.png";
 import relatedImage from "../assets/product/image-tovar-related.png";
@@ -118,8 +118,8 @@ function FileRow({ name }: { name: string }) {
         <p>{name}</p>
       </div>
       <div className="file-row__actions">
-        <button type="button">Просмотр <Eye size={18} /></button>
-        <button type="button">Скачать <Download size={17} /></button>
+        <button type="button">Просмотр <img src={iconEye} alt="" /></button>
+        <button type="button">Скачать <img src={iconFile} alt="" /></button>
       </div>
     </div>
   );
@@ -158,8 +158,12 @@ function ProductFiles() {
   return (
     <section className="content-card product-files">
       <h2>Файлы</h2>
-      {files.map((file) => <FileRow name={file} key={file} />)}
-      <button className="text-link" type="button">Посмотреть все файлы <ChevronDown size={15} /></button>
+      <div className="product-files__grid">
+        {files.map((file) => <FileRow name={file} key={file} />)}
+      </div>
+      <button className="text-link text-link--files" type="button">
+        Посмотреть все файлы <img src={iconArrow} alt="" />
+      </button>
     </section>
   );
 }
@@ -215,7 +219,7 @@ function Faq() {
       </div>
       {items.map((item) => (
         <div className="faq-item" key={item}>
-          <button type="button"><ChevronDown size={24} />{item}</button>
+          <button type="button"><img className="faq-item__arrow" src={iconArrow} alt="" />{item}</button>
         </div>
       ))}
     </section>
