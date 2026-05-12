@@ -12,6 +12,7 @@ export default defineConfig({
         home: path.resolve(__dirname, 'index.html'),
         menuNkt: path.resolve(__dirname, 'menu-nkt/index.html'),
         menuNktSeredenko: path.resolve(__dirname, 'menu-nkt/seredenko/index.html'),
+        menuNktProduct: path.resolve(__dirname, 'menu-nkt/product/index.html'),
       },
     },
   },
