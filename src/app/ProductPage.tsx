@@ -202,6 +202,11 @@ function Specs() {
 
 function Faq() {
   const [openItems, setOpenItems] = useState([0]);
+  const ClosedArrow = () => (
+    <svg className="faq-item__arrow" width="19" height="25" viewBox="0 0 19 25" fill="none" aria-hidden="true">
+      <path d="M0.707102 12.4853L9.19238 4.00002L17.6776 12.4852" stroke="currentColor" strokeWidth="2" />
+    </svg>
+  );
   const items = [
     {
       question: "Совместима ли данная вилка с кабелями RG-316 и RG-178?",
@@ -238,7 +243,7 @@ function Faq() {
         return (
           <div className={`faq-item ${isOpen ? "is-open" : ""}`} key={item.question}>
             <button type="button" onClick={() => toggleItem(index)} aria-expanded={isOpen}>
-              {isOpen ? <ChevronUp size={24} /> : <img className="faq-item__arrow" src={iconArrow} alt="" />}
+              {isOpen ? <ChevronUp size={24} /> : <ClosedArrow />}
               {item.question}
             </button>
             {isOpen && <p>{item.answer}</p>}
