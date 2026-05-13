@@ -275,7 +275,6 @@ function RelatedProducts() {
             <small>Минимальный заказ 1 шт.</small>
             <button className="related-card__cart" type="button">В корзину</button>
             <button className="related-card__compare" type="button">Сравнить</button>
-            <button className="related-card__list" type="button">Добавить в список</button>
           </article>
         ))}
       </div>
