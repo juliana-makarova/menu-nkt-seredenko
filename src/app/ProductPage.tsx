@@ -47,6 +47,7 @@ const relatedProducts = Array.from({ length: 4 }, (_, index) => ({
 }));
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const nav = ["Каталог", "Применение", "Производители", "О компании", "Производство", "Новости", "Контакты"];
 
   return (
@@ -74,9 +75,21 @@ function Header() {
           <button type="button"><ShoppingCart size={24} /><span>Корзина</span></button>
           <button type="button"><UserCircle size={25} /><span>Личный кабинет</span></button>
         </div>
+
+        <button
+          className={`product-header__burger ${isMenuOpen ? "is-open" : ""}`}
+          type="button"
+          aria-expanded={isMenuOpen}
+          aria-label="Открыть меню"
+          onClick={() => setIsMenuOpen((current) => !current)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </div>
 
-      <nav className="product-header__nav" aria-label="Основная навигация">
+      <nav className={`product-header__nav ${isMenuOpen ? "is-open" : ""}`} aria-label="Основная навигация">
         {nav.map((item, index) => (
           <a className={index === 0 ? "is-active" : ""} href="#" key={item}>
             {item}
@@ -283,6 +296,8 @@ function RelatedProducts() {
 }
 
 export default function ProductPage() {
+  const [isOrderOpen, setIsOrderOpen] = useState(false);
+
   return (
     <div className="product-page">
       <Header />
@@ -307,6 +322,18 @@ export default function ProductPage() {
 
         <RelatedProducts />
       </main>
+      <button className="mobile-order-button" type="button" onClick={() => setIsOrderOpen(true)}>
+        Как заказать
+      </button>
+      <div className={`mobile-order-modal ${isOrderOpen ? "is-open" : ""}`} aria-hidden={!isOrderOpen}>
+        <button className="mobile-order-modal__overlay" type="button" aria-label="Закрыть" onClick={() => setIsOrderOpen(false)} />
+        <div className="mobile-order-modal__panel" role="dialog" aria-modal="true" aria-label="Как заказать">
+          <button className="mobile-order-modal__close" type="button" aria-label="Закрыть" onClick={() => setIsOrderOpen(false)}>
+            ×
+          </button>
+          <BuyPanel className="buy-panel--modal" />
+        </div>
+      </div>
       <footer className="product-footer" />
     </div>
   );

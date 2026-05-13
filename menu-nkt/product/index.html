@@ -9,7 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../../src/styles/product.css?v=84ad0f2" />
+    <link rel="stylesheet" href="../../src/styles/product.css?v=mobile-order" />
     <title>Соединитель коаксиальный H+S 16 MMCX-50-2-13/111 OE</title>
   </head>
   <body>
@@ -35,6 +35,7 @@
             <button type="button"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 6h15l-2 8H8L6 3H3M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM18 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" stroke="currentColor" stroke-width="2"/></svg><span>Корзина</span></button>
             <button type="button"><svg width="25" height="25" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/><path d="M7 20c.8-2 2.4-3 5-3s4.2 1 5 3" stroke="currentColor" stroke-width="2"/></svg><span>Личный кабинет</span></button>
           </div>
+          <button class="product-header__burger" type="button" aria-expanded="false" aria-label="Открыть меню"><span></span><span></span><span></span></button>
         </div>
         <nav class="product-header__nav" aria-label="Основная навигация">
           <a class="is-active" href="#">Каталог</a>
@@ -173,10 +174,35 @@
           </div>
         </section>
       </main>
+      <button class="mobile-order-button" type="button">Как заказать</button>
+      <div class="mobile-order-modal" aria-hidden="true">
+        <button class="mobile-order-modal__overlay" type="button" aria-label="Закрыть"></button>
+        <div class="mobile-order-modal__panel" role="dialog" aria-modal="true" aria-label="Как заказать">
+          <button class="mobile-order-modal__close" type="button" aria-label="Закрыть">×</button>
+          <aside class="buy-panel buy-panel--modal">
+            <h2>Цена по запросу</h2>
+            <button class="buy-panel__request" type="button">Запросить цену</button>
+            <strong class="buy-panel__stock">Доступно к заказу</strong>
+            <div class="buy-panel__counter" aria-label="Количество"><button type="button">-</button><span>1</span><button type="button">+</button></div>
+            <p>Минимальный заказ 1 шт.</p>
+            <button class="buy-panel__cart" type="button">В корзину</button>
+            <button class="buy-panel__compare" type="button">Сравнить</button>
+            <div class="buy-panel__manager"><h3>Менеджер по товару</h3><span>Павел Мельник</span><span>pavel.melnik@nkt.ru</span><span>+7 495 7870550 доб.9999</span></div>
+          </aside>
+        </div>
+      </div>
       <footer class="product-footer"></footer>
     </div>
 
     <script>
+      const burgerButton = document.querySelector(".product-header__burger");
+      const headerNav = document.querySelector(".product-header__nav");
+      burgerButton?.addEventListener("click", () => {
+        const isOpen = headerNav.classList.toggle("is-open");
+        burgerButton.classList.toggle("is-open", isOpen);
+        burgerButton.setAttribute("aria-expanded", String(isOpen));
+      });
+
       document.querySelectorAll(".product-faq .faq-item button").forEach((button) => {
         const closedArrow = '<svg class="faq-item__arrow" width="19" height="25" viewBox="0 0 19 25" fill="none" aria-hidden="true"><path d="M0.707102 12.4853L9.19238 4.00002L17.6776 12.4852" stroke="currentColor" stroke-width="2"/></svg>';
         button.addEventListener("click", () => {
@@ -206,6 +232,20 @@
         const isOpen = section.classList.toggle("is-open");
         filesButton.setAttribute("aria-expanded", String(isOpen));
         filesButton.firstChild.textContent = isOpen ? "Свернуть " : "Посмотреть все файлы ";
+      });
+
+      const orderButton = document.querySelector(".mobile-order-button");
+      const orderModal = document.querySelector(".mobile-order-modal");
+      const closeOrderButtons = document.querySelectorAll(".mobile-order-modal__overlay, .mobile-order-modal__close");
+      orderButton?.addEventListener("click", () => {
+        orderModal.classList.add("is-open");
+        orderModal.setAttribute("aria-hidden", "false");
+      });
+      closeOrderButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          orderModal.classList.remove("is-open");
+          orderModal.setAttribute("aria-hidden", "true");
+        });
       });
     </script>
   </body>
